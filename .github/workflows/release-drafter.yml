@@ -26,3 +26,5 @@ jobs:
                   config-name: release-drafter.config.yml
                   version: ${{ env.SPRINT_NUMBER }}
                   tag: ${{ env.SPRINT_NUMBER }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
