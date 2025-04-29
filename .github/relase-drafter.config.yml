@@ -1,0 +1,52 @@
+name-template: "v$RESOLVED_VERSION 🌈"
+tag-template: "v$RESOLVED_VERSION"
+autolabeler:
+    - label: "chore"
+      files:
+          - "*.md"
+      branch:
+          - '/docs{0,1}\/.+/'
+    - label: "refactor"
+      branch:
+          - '/refactor\/.+/'
+      title:
+          - "/refactor/i"
+    - label: "bug"
+      branch:
+          - '/fix\/.+/'
+      title:
+          - "/fix/i"
+    - label: "feature"
+      branch:
+          - '/feature\/.+/'
+      body:
+          - "/NOAK-[0-9]{1,4}/"
+    - label: "other"
+      branch:
+          - '/other\/.+/'
+      title:
+          - "/other/i"
+categories:
+    - title: "🚀 Features"
+      labels:
+          - "feature"
+    - title: "🛠 Refactoring"
+      labels:
+          - "refactor"
+    - title: "🐛 Bug Fixes"
+      labels:
+          - "fix"
+          - "bugfix"
+          - "bug"
+    - title: "🧰 Maintenance"
+      label:
+          - "chore"
+    - title: "📝 Others"
+      label:
+          - "other"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+template: |
+    ## Changes
+
+    $CHANGES

@@ -1,0 +1,30 @@
+name: Release Drafter
+
+on:
+    push:
+        branches:
+            - "release/sprint-*"
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    update_release_draft:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Extract sprint number
+              id: sprint_number
+              run: |
+                  BRANCH_NAME=${{ github.ref_name }}
+                  SPRINT_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+$')
+                  echo "SPRINT_NUMBER=$SPRINT_NUMBER" >> $GITHUB_ENV
+
+            - name: Release Drafter
+              uses: release-drafter/release-drafter@v6
+              with:
+                  config-name: release-drafter.config.yml
+                  version: ${{ env.SPRINT_NUMBER }}
+                  tag: ${{ env.SPRINT_NUMBER }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

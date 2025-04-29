@@ -1,0 +1,6 @@
+release: ["release/*"]
+feature: ["feature/*", "feat/*"]
+fix: ["fix/*", "hotfix/*", "bugfix/*", "bug/*", ]
+refactor: ["refactor/*"]
+chore: ["chore/*"]
+other: ["other/*"]
