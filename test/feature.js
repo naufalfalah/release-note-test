@@ -1,2 +1,2 @@
-const a = "";
+const a = "fixed";
 const b = 123;
