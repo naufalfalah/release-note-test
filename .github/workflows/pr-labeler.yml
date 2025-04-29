@@ -5,7 +5,7 @@ on:
         types: [opened]
 
 permissions:
-    contents: read
+    contents: write
     pull-requests: write # Add this at the top to ensure PR labeling works
 
 jobs:
@@ -15,5 +15,3 @@ jobs:
             - uses: TimonVS/pr-labeler-action@v5
               with:
                   configuration-path: .github/pr-labeler.config.yml # Optional, default is .github/pr-labeler.yml
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
